@@ -15,6 +15,7 @@ interface Project {
   image: string;
   tools: string[];
   category: 'software' | 'ml';
+  link: string;
 }
 
 const projects: Project[] = [
@@ -24,7 +25,8 @@ const projects: Project[] = [
     description: "A web application to reserve sports facilities like tennis court, basketball, and more.",
     image: mykerchiefImage, // Add your image path
     tools: ["React", "Node.js", "MongoDB"],
-    category: "software"
+    category: "software",
+    link: "https://github.com/omkar-79/reservation_app"
   },
   {
     id: 2,
@@ -32,7 +34,8 @@ const projects: Project[] = [
     description: "Project teammate finding community. Find your project teammates here.",
     image: varangio, // Add your image path
     tools: ["React", "Node.js", "MongoDB"],
-    category: "software"
+    category: "software",
+    link: "https://github.com/omkar-79/varangio"
   },
   {
     id: 3,
@@ -40,7 +43,8 @@ const projects: Project[] = [
     description: "A web application for predicting sales in a restaurant.",
     image: foodstack, // Add your image path
     tools: ["SGDRegressor", "Databricks", "MongoDB"],
-    category: "ml"
+    category: "ml",
+    link: "https://github.com/omkar-79/foodstack-ml"
   },
   // Add more projects here
 ];
@@ -111,6 +115,7 @@ export default function Projects() {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
               className="bg-[#2A2F32] rounded-lg overflow-hidden"
+              onClick={() => window.open(project.link, '_blank')}
             >
               <div className="relative h-48">
                 <Image
