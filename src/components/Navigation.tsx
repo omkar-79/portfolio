@@ -13,12 +13,12 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-transparent z-50 backdrop-blur-sm font-[family-name:var(--font-geist-sans)]">
+    <nav className="fixed top-0 w-full bg-transparent z-50 backdrop-blur-sm font-poppins">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex-shrink-0 hover:text-white transition-colors">
-            <span className="text-xl font-bold">Omkar x Code</span>
+            <span className="text-xl font-bold text-white">OmkarxCode</span>
           </div>
 
           {/* Desktop Menu */}
