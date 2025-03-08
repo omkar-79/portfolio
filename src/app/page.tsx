@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import SpotlightBackground from "@/components/SpotlightBackground";
 import Quote from "@/components/Quote";
 import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
       <SpotlightBackground />
       <Quote />
       <Skills />
-      
+      <Projects />
 
       <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
