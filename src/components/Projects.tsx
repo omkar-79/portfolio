@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import mykerchiefImage from '@/assets/mykerchief.jpg';
 import varangio from '@/assets/Varangio.jpg';
 import foodstack from '@/assets/FoodStack.png';
@@ -11,7 +11,7 @@ interface Project {
   id: number;
   name: string;
   description: string;
-  image: string;
+  image: StaticImageData;
   tools: string[];
   category: 'software' | 'ml';
   link: string;
