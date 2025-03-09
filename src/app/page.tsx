@@ -1,5 +1,4 @@
 import Hero from "@/components/Hero";
-import Scripts from "@/components/Scripts";
 import Navigation from "@/components/Navigation";
 import SpotlightBackground from "@/components/SpotlightBackground";
 import Quote from "@/components/Quote";
@@ -14,7 +13,6 @@ import ResumeButton from "@/components/ResumeButton";
 export default function Home() {
   return (
     <>
-      <Scripts />
       <Navigation />
       <Hero />
       <SpotlightBackground />
