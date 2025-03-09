@@ -2,22 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-// Replace any with proper type
-interface VantaEffectOptions {
-  el: HTMLElement;
-  mouseControls: boolean;
-  touchControls: boolean;
-  gyroControls: boolean;
-  minHeight: number;
-  minWidth: number;
-  scale: number;
-  scaleMobile: number;
-  color: string;
-  backgroundColor: string;
-}
-
 export default function Hero() {
-  const [vantaEffect, setVantaEffect] = useState<VantaEffectOptions | null>(null);
+  const [vantaEffect, setVantaEffect] = useState<any>(null);
   const vantaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

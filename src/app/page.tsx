@@ -9,10 +9,12 @@ import Blog from "@/components/Blog";
 import Footer from "@/components/Footer";
 import ScrollSection from "@/components/ScrollSection";
 import ResumeButton from "@/components/ResumeButton";
+import Scripts from "@/components/Scripts";
 
 export default function Home() {
   return (
     <>
+    <Scripts />
       <Navigation />
       <Hero />
       <SpotlightBackground />
