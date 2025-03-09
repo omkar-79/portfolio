@@ -6,7 +6,6 @@ import Image from 'next/image';
 import mykerchiefImage from '@/assets/mykerchief.jpg';
 import varangio from '@/assets/Varangio.jpg';
 import foodstack from '@/assets/FoodStack.png';
-import { FolderOff } from '@mui/icons-material';
 
 interface Project {
   id: number;

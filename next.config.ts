@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  mages: {
+  images: {
     domains: ['cdn-images-1.medium.com'],
   },
 };

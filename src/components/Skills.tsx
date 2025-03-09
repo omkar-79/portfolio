@@ -58,17 +58,17 @@ export default function Skills() {
         initial="hidden"
         animate="visible"
       >
-        {skills.map((skillGroup, index) => (
+        {skills.map((skill) => (
           <motion.div
-            key={skillGroup.category}
+            key={skill.category}
             className="bg-[#2A2F32] p-6 rounded-lg w-full"
             variants={itemVariants}
           >
             <h3 className="text-xl font-semibold mb-4 text-[#49c5b6] text-center">
-              {skillGroup.category}
+              {skill.category}
             </h3>
             <div className="flex flex-wrap gap-2 justify-center">
-              {skillGroup.items.map((skill) => (
+              {skill.items.map((skill) => (
                 <span
                   key={skill}
                   className="bg-[#383F42] px-3 py-1 rounded-full text-sm text-gray-200"

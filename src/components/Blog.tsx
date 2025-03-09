@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface BlogPost {
   title: string;
-  subtitle: string;
+  description: string;
   thumbnail: string;
   link: string;
-  publishDate: string;
+  pubDate: string;
 }
 
 export default function Blog() {
@@ -30,7 +31,7 @@ export default function Blog() {
         const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}`);
         const data = await response.json();
         
-        const formattedPosts = data.items.map((item: any) => ({
+        const formattedPosts = data.items.map((item: BlogPost) => ({
           title: item.title,
           subtitle: item.description.replace(/<[^>]*>/g, '').slice(0, 100) + '...',
           thumbnail: extractImageUrl(item.description),
@@ -81,10 +82,11 @@ export default function Blog() {
               transition={{ delay: index * 0.1 }}
             >
               <div className="relative h-48">
-                <img
-                  src={post.thumbnail || '/blog-placeholder.jpg'}
+                <Image
+                  src={post.thumbnail}
                   alt={post.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               <div className="p-6">
