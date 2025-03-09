@@ -9,6 +9,7 @@ import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Blog from "@/components/Blog";
 import Footer from "@/components/Footer";
+import ScrollSection from "@/components/ScrollSection";
 
 export default function Home() {
   return (
@@ -17,12 +18,30 @@ export default function Home() {
       <Navigation />
       <Hero />
       <SpotlightBackground />
-      <Quote />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Blog />
-      <Footer />
+      
+      <ScrollSection>
+        <Quote />
+      </ScrollSection>
+      
+      <ScrollSection>
+        <Skills />
+      </ScrollSection>
+      
+      <ScrollSection>
+        <Projects />
+      </ScrollSection>
+      
+      <ScrollSection>
+        <Experience />
+      </ScrollSection>
+      
+      <ScrollSection>
+        <Blog />
+      </ScrollSection>
+      
+      <ScrollSection>
+        <Footer />
+      </ScrollSection>
     </>
   );
 }
