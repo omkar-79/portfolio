@@ -10,6 +10,8 @@ interface BlogPost {
   thumbnail: string;
   link: string;
   pubDate: string;
+  subtitle?: string;     // Add this
+  publishDate?: string;  // Add this
 }
 
 export default function Blog() {
@@ -31,11 +33,13 @@ export default function Blog() {
         const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}`);
         const data = await response.json();
         
-        const formattedPosts = data.items.map((item: BlogPost) => ({
+        const formattedPosts = data.items.map((item: any) => ({
           title: item.title,
+          description: item.description,
           subtitle: item.description.replace(/<[^>]*>/g, '').slice(0, 100) + '...',
           thumbnail: extractImageUrl(item.description),
           link: item.link,
+          pubDate: item.pubDate,
           publishDate: new Date(item.pubDate).toLocaleDateString()
         }));
 
