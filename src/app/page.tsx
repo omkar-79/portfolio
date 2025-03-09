@@ -10,6 +10,7 @@ import Experience from "@/components/Experience";
 import Blog from "@/components/Blog";
 import Footer from "@/components/Footer";
 import ScrollSection from "@/components/ScrollSection";
+import ResumeButton from "@/components/ResumeButton";
 
 export default function Home() {
   return (
@@ -19,24 +20,28 @@ export default function Home() {
       <Hero />
       <SpotlightBackground />
       
-      <ScrollSection>
+      <ScrollSection id="about">
         <Quote />
       </ScrollSection>
       
-      <ScrollSection>
+      <ScrollSection id="skills">
         <Skills />
       </ScrollSection>
       
-      <ScrollSection>
+      <ScrollSection id="projects">
         <Projects />
       </ScrollSection>
       
-      <ScrollSection>
+      <ScrollSection id="experience">
         <Experience />
       </ScrollSection>
       
-      <ScrollSection>
+      <ScrollSection id="blogs">
         <Blog />
+      </ScrollSection>
+
+      <ScrollSection>
+        <ResumeButton />
       </ScrollSection>
       
       <ScrollSection>
