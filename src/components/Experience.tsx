@@ -22,7 +22,7 @@ const experiences: Experience[] = [
     skills: ["Python", "InfluxDB", "Grafana", "FastAPI", "Git"]
   },
   {
-    title: "Research Assitant",
+    title: "Research Assistant",
     company: "George Washington University",
     duration: "August 2024 - Prsent",
     description: [

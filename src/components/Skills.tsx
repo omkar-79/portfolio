@@ -14,11 +14,11 @@ const skills: Skill[] = [
   },
   {
     category: "Frameworks & Libraries",
-    items: ["React.js", "Next.js", "Node.js", "Express.js", "Django", "TensorFlow", "PyTorch"]
+    items: ["React.js", "Next.js", "Node.js", "Express.js", "Django", "TensorFlow", "PyTorch", "Scikit Learn"]
   },
   {
     category: "Tools & Platforms",
-    items: ["Git", "Docker", "AWS", "MongoDB", "PostgreSQL", "Linux", "REST APIs"]
+    items: ["Git", "Docker", "AWS", "MongoDB", "PostgreSQL", "Linux", "REST APIs", "Firebase"]
   }
 ];
 
