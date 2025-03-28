@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 const LoadingDot = {
   display: "block",
@@ -17,7 +17,7 @@ const LoadingContainer = {
   justifyContent: "space-around"
 };
 
-const ContainerVariants = {
+const ContainerVariants: Variants = {
   initial: {
     transition: {
       staggerChildren: 0.2
@@ -30,7 +30,7 @@ const ContainerVariants = {
   }
 };
 
-const DotVariants = {
+const DotVariants: Variants = {
   initial: {
     y: "0%"
   },
@@ -39,7 +39,7 @@ const DotVariants = {
     transition: {
       duration: 0.5,
       repeat: Infinity,
-      repeatType: "reverse",
+      repeatType: "reverse" as const,
       ease: "easeInOut"
     }
   }
