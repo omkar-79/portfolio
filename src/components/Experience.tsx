@@ -12,6 +12,16 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
+    title: "Research Assistant",
+    company: "George Washington University",
+    duration: "August 2024 - Present",
+    description: [
+      "Assess patent potential and commercial viability of emerging technologies developed at the university",
+      "Built a Python-based Chrome extension to automate sending personalized marketing emails"
+    ],
+    skills: ["Python", "Technical Writing", "Computer Architecture", "Deep Learning"]
+  },
+  {
     title: "Software Engineer Intern",
     company: "Chistats Labs",
     duration: "September 2022 - November 2022",
@@ -21,16 +31,7 @@ const experiences: Experience[] = [
     ],
     skills: ["Python", "InfluxDB", "Grafana", "FastAPI", "Git"]
   },
-  {
-    title: "Research Assistant",
-    company: "George Washington University",
-    duration: "August 2024 - Prsent",
-    description: [
-      "Assess patent potential and commercial viability of emerging technologies developed at the university",
-      "Built a Python-based Chrome extension to automate sending personalized marketing emails"
-    ],
-    skills: ["Python", "Technical Writing", "Computer Architecture", "Deep Learning"]
-  },
+  
   // Add more experiences...
 ];
 

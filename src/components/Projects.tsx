@@ -6,6 +6,7 @@ import Image, { StaticImageData } from 'next/image';
 import mykerchiefImage from '@/assets/mykerchief.jpg';
 import varangio from '@/assets/Varangio.jpg';
 import foodstack from '@/assets/FoodStack.png';
+import parkinsons from '@/assets/parkinsons.png';
 
 interface Project {
   id: number;
@@ -23,18 +24,18 @@ const projects: Project[] = [
     name: "Reservation App",
     description: "A web application to reserve sports facilities like tennis court, basketball, and more.",
     image: mykerchiefImage, // Add your image path
-    tools: ["React", "Node.js", "MongoDB"],
+    tools: ["React", "Node.js", "MongoDB","REST API"],
     category: "software",
-    link: "https://github.com/omkar-79/reservation_app"
+    link: "https://mykerchief.live/"
   },
   {
     id: 2,
-    name: "Teammate Finder",
-    description: "Project teammate finding community. Find your project teammates here.",
-    image: varangio, // Add your image path
-    tools: ["React", "Node.js", "MongoDB"],
+    name: "Parkinson's Mobile App",
+    description: "A Parkinson's disease progress tracking system using MOCA test.",
+    image: parkinsons, // Add your image path
+    tools: [ "Expo Go", "Fast API", "PostgreSQL"],
     category: "software",
-    link: "https://github.com/omkar-79/varangio"
+    link: "https://github.com/omkar-79/parkinson-app"
   },
   {
     id: 3,
@@ -44,6 +45,15 @@ const projects: Project[] = [
     tools: ["SGDRegressor", "Databricks", "MongoDB"],
     category: "ml",
     link: "https://github.com/omkar-79/foodstack-ml"
+  },
+  {
+    id: 4,
+    name: "News Summarization App",
+    description: "A web application to summarize news articles using NLP. Used Google's T5 model and CNN/DailyMail dataset.",
+    image: foodstack, // Add your image path
+    tools: ["Python", "HuggingFace", "HTML"],
+    category: "ml",
+    link: "hhttps://github.com/omkar-79/news-summarization"
   },
   // Add more projects here
 ];
