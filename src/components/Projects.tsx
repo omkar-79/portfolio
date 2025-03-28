@@ -7,6 +7,7 @@ import mykerchiefImage from '@/assets/mykerchief.jpg';
 import varangio from '@/assets/Varangio.jpg';
 import foodstack from '@/assets/FoodStack.png';
 import parkinsons from '@/assets/parkinsons.png';
+import news_app from '@/assets/news.png';
 
 interface Project {
   id: number;
@@ -50,7 +51,7 @@ const projects: Project[] = [
     id: 4,
     name: "News Summarization App",
     description: "A web application to summarize news articles using NLP. Used Google's T5 model and CNN/DailyMail dataset.",
-    image: foodstack, // Add your image path
+    image: news_app, // Add your image path
     tools: ["Python", "HuggingFace", "HTML"],
     category: "ml",
     link: "hhttps://github.com/omkar-79/news-summarization"
