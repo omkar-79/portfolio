@@ -19,23 +19,23 @@ import Image from "next/image";
        <Hero />
        <SpotlightBackground />
        
-       <ScrollSection>
+       <ScrollSection id="about">
          <Quote />
        </ScrollSection>
        
-       <ScrollSection>
+       <ScrollSection id="skills">
          <Skills />
        </ScrollSection>
        
-       <ScrollSection>
+       <ScrollSection id="projects">
          <Projects />
        </ScrollSection>
        
-       <ScrollSection>
+       <ScrollSection id="experience">
          <Experience />
        </ScrollSection>
        
-       <ScrollSection>
+       <ScrollSection id="blogs">
          <Blog />
        </ScrollSection>
        
