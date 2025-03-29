@@ -54,7 +54,7 @@ const projects: Project[] = [
     image: news_app, // Add your image path
     tools: ["Python", "HuggingFace", "HTML"],
     category: "ml",
-    link: "hhttps://github.com/omkar-79/news-summarization"
+    link: "https://github.com/omkar-79/news-summarization"
   },
   // Add more projects here
 ];
