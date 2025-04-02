@@ -9,7 +9,7 @@ A website to showcase my projects and experience in software engineering and mac
 - Blog Posts
 - Navigation bar
 
-### Pre-requistes:
+### Prerequisites:
 Node.js 20.12.0 or later installed.
 
 ### Installation
