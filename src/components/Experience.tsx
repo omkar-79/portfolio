@@ -26,7 +26,7 @@ const experiences: Experience[] = [
     company: "Chistats Labs",
     duration: "September 2022 - November 2022",
     description: [
-      "Built an alert system, reducing system downtime by 40% through proactive monitoring.",
+      "Built an alert system, reducing system downtime by 40% through proactive monitoring",
       "Built a data pipeline to ingest real-time weather data using Telegraf, and visualize trends in Grafana"
     ],
     skills: ["Python", "InfluxDB", "Grafana", "FastAPI", "Git"]
