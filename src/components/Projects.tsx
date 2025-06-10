@@ -8,6 +8,9 @@ import varangio from '@/assets/Varangio.jpg';
 import foodstack from '@/assets/FoodStack.png';
 import parkinsons from '@/assets/parkinsons.png';
 import news_app from '@/assets/news.png';
+import medcompass from '@/assets/medcompass.png';
+import droneit from '@/assets/droneit.jpg';
+import emailbuddy from '@/assets/emailbuddylogo.png';
 
 interface Project {
   id: number;
@@ -23,7 +26,7 @@ const projects: Project[] = [
   {
     id: 1,
     name: "Reservation App",
-    description: "A web application to reserve sports facilities like tennis court, basketball, and more.",
+    description: "A web application to reserve sports facilities like tennis court, basketball, and more",
     image: mykerchiefImage, // Add your image path
     tools: ["React", "Node.js", "MongoDB","REST API"],
     category: "software",
@@ -32,8 +35,8 @@ const projects: Project[] = [
   {
     id: 2,
     name: "Parkinson's Mobile App",
-    description: "A Parkinson's disease progress tracking system using MOCA test.",
-    image: parkinsons, // Add your image path
+    description: "A Parkinson's disease progress tracking system using MOCA test",
+    image: parkinsons, 
     tools: [ "Expo Go", "Fast API", "PostgreSQL"],
     category: "software",
     link: "https://github.com/omkar-79/parkinson-app"
@@ -41,8 +44,8 @@ const projects: Project[] = [
   {
     id: 3,
     name: "FoodStack",
-    description: "A web application for predicting sales in a restaurant.",
-    image: foodstack, // Add your image path
+    description: "A web application for predicting sales in a restaurant",
+    image: foodstack, 
     tools: ["SGDRegressor", "Databricks", "MongoDB"],
     category: "ml",
     link: "https://github.com/omkar-79/foodstack-ml"
@@ -50,11 +53,38 @@ const projects: Project[] = [
   {
     id: 4,
     name: "News Summarization App",
-    description: "A web application to summarize news articles using NLP. Used Google's T5 model and CNN/DailyMail dataset.",
-    image: news_app, // Add your image path
+    description: "A web application to summarize news articles using NLP. Used Google's T5 model and CNN/DailyMail dataset",
+    image: news_app, 
     tools: ["Python", "HuggingFace", "HTML"],
     category: "ml",
     link: "https://github.com/omkar-79/news-summarization"
+  },
+  {
+    id: 5,
+    name: "DroneIt",
+    description: "A secure, discussion platform for Drone enthusiast to post drone challenges and innovators provide solutions",
+    image: droneit, 
+    tools: ["React", "Prisma ORM", "Redux","GraphQL"],
+    category: "software",
+    link: "https://github.com/omkar-79/DroneWERX"
+  },
+  {
+    id: 6,
+    name: "Email Buddy AI",
+    description: "LLM-powered personalized marketing email generator using Claude Sonnet 4",
+    image: emailbuddy, 
+    tools: ["Python", "FastAPI", "MCP", "Claude API"],
+    category: "ml",
+    link: "https://github.com/omkar-79/claude4-mcp-emailer"
+  },
+  {
+    id: 7,
+    name: "MedCompass",
+    description: "An automated post-discharge call system for hospitals to schedule follow-up calls",
+    image: medcompass, 
+    tools: ["Node.js", "REST API", "MongoDB"],
+    category: "software",
+    link: "https://github.com/omkar-79/medcompass"
   },
   // Add more projects here
 ];

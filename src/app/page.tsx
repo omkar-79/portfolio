@@ -16,15 +16,13 @@ import Image from "next/image";
      <>
        <Scripts />
        <Navigation />
-       <Hero />
+
+         <Hero />
+
        <SpotlightBackground />
        
        <ScrollSection id="about">
          <Quote />
-       </ScrollSection>
-       
-       <ScrollSection id="skills">
-         <Skills />
        </ScrollSection>
        
        <ScrollSection id="projects">
@@ -33,6 +31,10 @@ import Image from "next/image";
        
        <ScrollSection id="experience">
          <Experience />
+       </ScrollSection>
+
+       <ScrollSection id="skills">
+         <Skills />
        </ScrollSection>
        
        <ScrollSection id="blogs">
