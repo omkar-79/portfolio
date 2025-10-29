@@ -53,3 +53,16 @@ html {
   z-index: 1;
   pointer-events: none;
 }
+
+/* Hide the file upload button in EditorJS image tool popover (all possible selectors) */
+.ce-popover__item[data-item-name='file'],
+.ce-popover__item[data-item-name='file'] *,
+.ce-popover__item[data-item-name='file'] > * {
+  display: none !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}

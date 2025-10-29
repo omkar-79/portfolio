@@ -33,7 +33,7 @@ export default function Quote() {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          machine learning (NLP, LLM, GenAI) field.
+          machine learning (NLP, LLM, GenAI).
         </motion.span>
       </motion.p>
     </div>

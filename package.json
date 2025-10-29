@@ -9,6 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@editorjs/code": "^2.9.3",
+    "@editorjs/delimiter": "^1.4.2",
+    "@editorjs/editorjs": "^2.30.8",
+    "@editorjs/header": "^2.8.8",
+    "@editorjs/image": "^2.10.3",
+    "@editorjs/list": "^2.0.8",
+    "@editorjs/quote": "^2.7.6",
+    "@editorjs/table": "^2.4.5",
     "framer-motion": "^12.4.10",
     "next": "15.1.7",
     "react": "^19.0.0",

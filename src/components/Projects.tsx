@@ -4,13 +4,16 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
 import mykerchiefImage from '@/assets/mykerchief.jpg';
-import varangio from '@/assets/Varangio.jpg';
 import foodstack from '@/assets/FoodStack.png';
 import parkinsons from '@/assets/parkinsons.png';
 import news_app from '@/assets/news.png';
 import medcompass from '@/assets/medcompass.png';
 import droneit from '@/assets/droneit.jpg';
 import emailbuddy from '@/assets/emailbuddylogo.png';
+import imagzai from '@/assets/imagzai.png';
+import invoice_optimizer from '@/assets/invoice-optimizer.png';
+import bluejayai from '@/assets/bluejayai.png'; 
+import it_support from '@/assets/it_support.png';
 
 interface Project {
   id: number;
@@ -25,6 +28,25 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    name: "Invoice Discount Optimizer",
+    description: "A financial analysis platform for optimizing invoice payment decisions",
+    image: invoice_optimizer, 
+    tools: ["Next.js", "Node.js", "AWS ECS Fargate"],
+    category: "software",
+    link: "https://github.com/omkar-79/invoice_discount_optimzer"
+  },
+  
+  {
+    id: 2,
+    name: "ImagzAI",
+    description: "A web platform for AI generated images with prompts",
+    image: imagzai, 
+    tools: ["Next.js", "GCP CDN", "PostgreSQL"],
+    category: "software",
+    link: "https://imagzai.com/"
+  },
+  {
+    id: 3,
     name: "Reservation App",
     description: "A web application to reserve sports facilities like tennis court, basketball, and more",
     image: mykerchiefImage, // Add your image path
@@ -33,52 +55,7 @@ const projects: Project[] = [
     link: "https://mykerchief.live/"
   },
   {
-    id: 2,
-    name: "Parkinson's Mobile App",
-    description: "A Parkinson's disease progress tracking system using MOCA test",
-    image: parkinsons, 
-    tools: [ "Expo Go", "Fast API", "PostgreSQL"],
-    category: "software",
-    link: "https://github.com/omkar-79/parkinson-app"
-  },
-  {
-    id: 3,
-    name: "FoodStack",
-    description: "A web application for predicting sales in a restaurant",
-    image: foodstack, 
-    tools: ["SGDRegressor", "Databricks", "MongoDB"],
-    category: "ml",
-    link: "https://github.com/omkar-79/foodstack-ml"
-  },
-  {
     id: 4,
-    name: "News Summarization App",
-    description: "A web application to summarize news articles using NLP. Used Google's T5 model and CNN/DailyMail dataset",
-    image: news_app, 
-    tools: ["Python", "HuggingFace", "HTML"],
-    category: "ml",
-    link: "https://github.com/omkar-79/news-summarization"
-  },
-  {
-    id: 5,
-    name: "DroneIt",
-    description: "A secure, discussion platform for Drone enthusiast to post drone challenges and innovators provide solutions",
-    image: droneit, 
-    tools: ["React", "Prisma ORM", "Redux","GraphQL"],
-    category: "software",
-    link: "https://github.com/omkar-79/DroneWERX"
-  },
-  {
-    id: 6,
-    name: "Email Buddy AI",
-    description: "LLM-powered personalized marketing email generator using Claude Sonnet 4",
-    image: emailbuddy, 
-    tools: ["Python", "FastAPI", "MCP", "Claude API"],
-    category: "ml",
-    link: "https://github.com/omkar-79/claude4-mcp-emailer"
-  },
-  {
-    id: 7,
     name: "MedCompass",
     description: "An automated post-discharge call system for hospitals to schedule follow-up calls",
     image: medcompass, 
@@ -86,6 +63,76 @@ const projects: Project[] = [
     category: "software",
     link: "https://github.com/omkar-79/medcompass"
   },
+  
+  
+  {
+    id: 5,
+    name: "Parkinson's Mobile App",
+    description: "A Parkinson's disease progress tracking system using MOCA test",
+    image: parkinsons, 
+    tools: [ "Expo Go", "FastAPI", "PostgreSQL"],
+    category: "software",
+    link: "https://github.com/omkar-79/parkinson-app"
+  },
+  {
+    id: 6,
+    name: "DroneIt",
+    description: "A secure, discussion platform for Drone enthusiast to post drone challenges and innovators provide solutions",
+    image: droneit, 
+    tools: ["React", "Prisma ORM"],
+    category: "software",
+    link: "https://github.com/omkar-79/DroneWERX"
+  },
+  {
+    id: 7,
+    name: "News Summarization App",
+    description: "A web application to summarize news articles using NLP. Used Google's T5 model and CNN/DailyMail dataset",
+    image: news_app, 
+    tools: ["Python", "HuggingFace"],
+    category: "ml",
+    link: "https://github.com/omkar-79/news-summarization"
+  },
+  {
+    id: 8,
+    name: "Email Buddy AI",
+    description: "LLM-powered personalized marketing email generator using Claude Sonnet 4",
+    image: emailbuddy, 
+    tools: ["Python", "FastAPI", "Model Context Protocol"],
+    category: "ml",
+    link: "https://github.com/omkar-79/claude4-mcp-emailer"
+  },
+  {
+    id: 9,
+    name: "BlueJay AI",
+    description: "An intelligent chat application that provides AI-driven insights and analysis for S&P 500 component stocks.",
+    image: bluejayai, 
+    tools: ["Python", "Google Gemini API", "SQL"],
+    category: "ml",
+    link: "https://github.com/omkar-79/bluejay_ai/tree/main"
+  },
+  {
+    id: 10,
+    name: "Multi-Agent IT Support System",
+    description: "A multi-agent system that provides automated IT support with intelligent routing and escalation.",
+    image: it_support, 
+    tools: ["Python", "Google Gemini API", "Agentic AI"],
+    category: "ml",
+    link: "https://github.com/omkar-79/AI-Ticket-Agent"
+  },
+  {
+    id: 11,
+    name: "FoodStack",
+    description: "A web application for predicting sales in a restaurant",
+    image: foodstack, 
+    tools: ["SGDRegressor", "Databricks"],
+    category: "ml",
+    link: "https://github.com/omkar-79/foodstack-ml"
+  },
+
+
+  
+  
+  
   // Add more projects here
 ];
 

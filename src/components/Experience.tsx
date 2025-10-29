@@ -12,14 +12,34 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
+    title: "Software Developer Intern",
+    company: "George Washington University",
+    duration: "August 2025 - Present",
+    description: [
+      "Building a MVP mobile application with Expo Go and React Native",
+      "Created an end-to-end CI/CD pipeline using Jenkins"
+    ],
+    skills: ["TypeScript", "React Native", "PostgreSQL", "Jenkins"]
+  },
+  {
+    title: "Software Engineer Intern",
+    company: "Medfilo",
+    duration: "June 2025 - September 2025",
+    description: [
+      "Built RESTful APIs with Node.js, Express, and JWT authentication",
+      "Developed a secure upload and retrieval system for documents in AWS S3 bucket"
+    ],
+    skills: ["Node.js", "Express", "JWT", "AWS S3", "Git"]
+  },
+  {
     title: "Research Assistant",
     company: "George Washington University",
     duration: "August 2024 - Present",
     description: [
       "Assess patent potential and commercial viability of emerging technologies developed at the university",
-      "Built a Python-based Chrome extension to automate sending personalized marketing emails"
+      "Drafted technical summaries and reports for the university's research projects"
     ],
-    skills: ["Python", "Technical Writing", "Computer Architecture", "Deep Learning"]
+    skills: ["Technical Writing", "Computer Architecture", "Artificial Intelligence"]
   },
   {
     title: "Software Engineer Intern",

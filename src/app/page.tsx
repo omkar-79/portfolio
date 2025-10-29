@@ -1,5 +1,4 @@
-import Image from "next/image";
- import Hero from "@/components/Hero";
+import Hero from "@/components/Hero";
  import Scripts from "@/components/Scripts";
  import Navigation from "@/components/Navigation";
  import SpotlightBackground from "@/components/SpotlightBackground";
@@ -24,13 +23,13 @@ import Image from "next/image";
        <ScrollSection id="about">
          <Quote />
        </ScrollSection>
+
+       <ScrollSection id="experience">
+         <Experience />
+       </ScrollSection>
        
        <ScrollSection id="projects">
          <Projects />
-       </ScrollSection>
-       
-       <ScrollSection id="experience">
-         <Experience />
        </ScrollSection>
 
        <ScrollSection id="skills">
