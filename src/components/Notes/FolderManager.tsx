@@ -3,17 +3,18 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiFolder, FiFolderPlus, FiTrash2, FiChevronRight, FiHome, FiEdit } from 'react-icons/fi';
+import type { EditorJSOutput } from '@/types/editorjs';
 
 interface Folder {
   id: string;
   name: string;
-  files: File[];
+  files: NoteFile[];
 }
 
-interface File {
+interface NoteFile {
   id: string;
   name: string;
-  content: string;
+  content: EditorJSOutput | string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -24,10 +25,10 @@ interface FolderManagerProps {
   onFolderSelect: (folderId: string | null) => void;
   onFolderCreate: (name: string) => void;
   onFolderDelete: (folderId: string) => void;
-  onFileSelect: (file: File) => void;
-  onFileCreate: (fileName: string, content: string) => void;
+  onFileSelect: (file: NoteFile) => void;
+  onFileCreate: (fileName: string, content: EditorJSOutput | string) => void;
   onFileDelete: (fileId: string) => void;
-  onFileEdit: (fileId: string, fileName: string, content: string) => void;
+  onFileEdit: (fileId: string, fileName: string, content: EditorJSOutput | string) => void;
 }
 
 export default function FolderManager({
@@ -44,10 +45,10 @@ export default function FolderManager({
 }: FolderManagerProps) {
   const [newFolderName, setNewFolderName] = useState('');
   const [showNewFolderInput, setShowNewFolderInput] = useState(false);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState<NoteFile | null>(null);
   const [showFileViewer, setShowFileViewer] = useState(false);
   const [showFileEditor, setShowFileEditor] = useState(false);
-  const [editingFile, setEditingFile] = useState<File | null>(null);
+  const [editingFile, setEditingFile] = useState<NoteFile | null>(null);
 
   const currentFolderData = currentFolder 
     ? folders.find(f => f.id === currentFolder) 
@@ -61,17 +62,17 @@ export default function FolderManager({
     }
   };
 
-  const handleFileClick = (file: File) => {
+  const handleFileClick = (file: NoteFile) => {
     setSelectedFile(file);
     setShowFileViewer(true);
   };
 
-  const handleEditFile = (file: File) => {
+  const handleEditFile = (file: NoteFile) => {
     setEditingFile(file);
     setShowFileEditor(true);
   };
 
-  const handleSaveFile = (fileName: string, content: string) => {
+  const handleSaveFile = (fileName: string, content: EditorJSOutput | string) => {
     if (editingFile) {
       onFileEdit(editingFile.id, fileName, content);
     } else {
@@ -257,7 +258,10 @@ export default function FolderManager({
                         <div>
                           <h4 className="text-white font-medium">{file.name}</h4>
                           <p className="text-gray-400 text-sm">
-                            {file.content.length} characters • {new Date(file.updatedAt).toLocaleDateString()}
+                            {typeof file.content === 'string'
+                              ? file.content.length
+                              : JSON.stringify(file.content).length}{' '}
+                            characters • {new Date(file.updatedAt).toLocaleDateString()}
                           </p>
                         </div>
                       </div>

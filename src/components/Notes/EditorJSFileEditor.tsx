@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiSave, FiFileText, FiEye } from 'react-icons/fi';
 import EditorJS from '@editorjs/editorjs';
@@ -12,13 +12,14 @@ import Delimiter from '@editorjs/delimiter';
 import Table from '@editorjs/table';
 import ImageTool from '@editorjs/image';
 import EditorJSRenderer from './EditorJSRenderer';
+import type { EditorJSOutput } from '@/types/editorjs';
 
 interface EditorJSFileEditorProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (fileName: string, content: any) => void;
+  onSave: (fileName: string, content: EditorJSOutput) => void;
   initialFileName?: string;
-  initialContent?: any;
+  initialContent?: EditorJSOutput | string | null;
   isEditing?: boolean;
 }
 
@@ -33,39 +34,34 @@ export default function EditorJSFileEditor({
   const [fileName, setFileName] = useState(initialFileName);
   const [isEditorReady, setIsEditorReady] = useState(false);
   const [activeTab, setActiveTab] = useState<'editor' | 'preview'>('editor');
-  const [previewData, setPreviewData] = useState<any>(initialContent);
+  const normalizeContent = (raw: EditorJSOutput | string | null | undefined): EditorJSOutput => {
+    if (!raw) return { blocks: [{ type: 'paragraph', data: { text: '' } }] };
+    if (typeof raw === 'string') {
+      return { blocks: [{ type: 'paragraph', data: { text: raw } }] };
+    }
+    return raw;
+  };
+
+  const [previewData, setPreviewData] = useState<EditorJSOutput | null>(
+    initialContent ? normalizeContent(initialContent) : null
+  );
   const editorRef = useRef<EditorJS | null>(null);
   const editorContainerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (isOpen) {
-      setFileName(initialFileName);
-      setActiveTab('editor');
-      initializeEditor();
-    }
-  }, [isOpen, initialFileName, initialContent]);
-
-  const initializeEditor = async () => {
+  const initializeEditor = useCallback(async () => {
     if (editorContainerRef.current) {
       // Destroy existing editor if it exists
       if (editorRef.current) {
         await editorRef.current.destroy();
       }
 
+      const content = normalizeContent(initialContent);
+
       // Initialize new editor
       editorRef.current = new EditorJS({
         holder: editorContainerRef.current,
         placeholder: 'Start writing your notes...',
-        data: initialContent || {
-          blocks: [
-            {
-              type: 'paragraph',
-              data: {
-                text: ''
-              }
-            }
-          ]
-        },
+        data: content,
         tools: {
           header: {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -133,7 +129,15 @@ export default function EditorJSFileEditor({
         }
       });
     }
-  };
+  }, [initialContent]);
+
+  useEffect(() => {
+    if (isOpen) {
+      setFileName(initialFileName);
+      setActiveTab('editor');
+      initializeEditor();
+    }
+  }, [isOpen, initialFileName, initialContent, initializeEditor]);
 
   // Fix EditorJS background and text color, and add scrolling
   useEffect(() => {

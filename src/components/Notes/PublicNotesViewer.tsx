@@ -4,17 +4,18 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiFolder, FiFileText, FiChevronRight, FiHome, FiLock } from 'react-icons/fi';
 import EditorJSRenderer from './EditorJSRenderer';
+import type { EditorJSOutput } from '@/types/editorjs';
 
 interface Folder {
   id: string;
   name: string;
-  files: File[];
+  files: NoteFile[];
 }
 
-interface File {
+interface NoteFile {
   id: string;
   name: string;
-  content: any;
+  content: EditorJSOutput | string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -26,14 +27,14 @@ interface PublicNotesViewerProps {
 
 export default function PublicNotesViewer({ folders, onAdminLogin }: PublicNotesViewerProps) {
   const [currentFolder, setCurrentFolder] = useState<string | null>(null);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState<NoteFile | null>(null);
   const [showFileViewer, setShowFileViewer] = useState(false);
 
   const currentFolderData = currentFolder 
     ? folders.find(f => f.id === currentFolder) 
     : null;
 
-  const handleFileClick = (file: File) => {
+  const handleFileClick = (file: NoteFile) => {
     setSelectedFile(file);
     setShowFileViewer(true);
   };
@@ -60,14 +61,11 @@ export default function PublicNotesViewer({ folders, onAdminLogin }: PublicNotes
     }
   };
 
-  const formatContent = (content: any) => {
-    // Check if content is EditorJS format or plain text
-    if (content && typeof content === 'object' && content.blocks) {
-      return null; // Will be handled by EditorJSRenderer
+  const formatContent = (rawContent: EditorJSOutput | string): string | null => {
+    if (rawContent && typeof rawContent === 'object' && 'blocks' in rawContent) {
+      return null;
     }
-    
-    // Fallback to plain text formatting
-    const textContent = typeof content === 'string' ? content : JSON.stringify(content);
+    const textContent = typeof rawContent === 'string' ? rawContent : JSON.stringify(rawContent);
     return textContent
       .split('\n')
       .map((line) => {
@@ -236,7 +234,10 @@ export default function PublicNotesViewer({ folders, onAdminLogin }: PublicNotes
                           <div className="flex-1">
                             <h4 className="text-white font-semibold text-lg mb-1">{file.name}</h4>
                             <p className="text-gray-400 text-sm">
-                              {file.content.length} characters • {new Date(file.updatedAt).toLocaleDateString()}
+                              {typeof file.content === 'string'
+                                ? file.content.length
+                                : JSON.stringify(file.content).length}{' '}
+                              characters • {new Date(file.updatedAt).toLocaleDateString()}
                             </p>
                           </div>
                         </div>
@@ -272,7 +273,14 @@ export default function PublicNotesViewer({ folders, onAdminLogin }: PublicNotes
                   <div>
                     <h2 className="text-xl font-semibold text-white">{selectedFile.name}</h2>
                     <p className="text-sm text-gray-400">
-                      {selectedFile.content.length} characters • {selectedFile.content.split('\n').length} lines
+                      {(typeof selectedFile.content === 'string'
+                        ? selectedFile.content.length
+                        : JSON.stringify(selectedFile.content).length)}{' '}
+                      characters •{' '}
+                      {(typeof selectedFile.content === 'string'
+                        ? selectedFile.content.split('\n').length
+                        : 1)}{' '}
+                      lines
                     </p>
                   </div>
                 </div>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
+import type { EditorJSOutput } from '@/types/editorjs';
 
 // Dynamic imports to prevent SSR issues with browser-only components
 const PublicNotesViewer = dynamic(() => import('@/components/Notes/PublicNotesViewer'), { ssr: false });
@@ -12,15 +13,29 @@ const FolderManager = dynamic(() => import('@/components/Notes/FolderManager'), 
 interface Folder {
   id: string;
   name: string;
-  files: File[];
+  files: NoteFile[];
 }
 
-interface File {
+interface NoteFile {
   id: string;
   name: string;
-  content: any; // EditorJS data structure
+  content: EditorJSOutput | string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+interface ParsedNoteFile {
+  id: string;
+  name: string;
+  content: EditorJSOutput | string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface ParsedFolder {
+  id: string;
+  name: string;
+  files: ParsedNoteFile[];
 }
 
 export default function NotesPage() {
@@ -41,11 +56,10 @@ export default function NotesPage() {
       
       if (savedFolders) {
         try {
-          const parsedFolders = JSON.parse(savedFolders);
-          // Convert date strings back to Date objects
-          const foldersWithDates = parsedFolders.map((folder: any) => ({
+          const parsedFolders: ParsedFolder[] = JSON.parse(savedFolders);
+          const foldersWithDates: Folder[] = parsedFolders.map((folder) => ({
             ...folder,
-            files: folder.files.map((file: any) => ({
+            files: folder.files.map((file) => ({
               ...file,
               createdAt: new Date(file.createdAt),
               updatedAt: new Date(file.updatedAt)
@@ -119,10 +133,10 @@ export default function NotesPage() {
     }
   };
 
-  const handleFileCreate = (fileName: string, content: any) => {
+  const handleFileCreate = (fileName: string, content: EditorJSOutput | string) => {
     if (!currentFolder) return;
 
-    const newFile: File = {
+    const newFile: NoteFile = {
       id: Date.now().toString(),
       name: fileName,
       content,
@@ -137,7 +151,7 @@ export default function NotesPage() {
     ));
   };
 
-  const handleFileEdit = (fileId: string, fileName: string, content: any) => {
+  const handleFileEdit = (fileId: string, fileName: string, content: EditorJSOutput | string) => {
     if (!currentFolder) return;
 
     setFolders(folders.map(folder => 

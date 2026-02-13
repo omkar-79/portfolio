@@ -10,8 +10,15 @@ interface BlogPost {
   thumbnail: string;
   link: string;
   pubDate: string;
-  subtitle?: string;     // Add this
-  publishDate?: string;  // Add this
+  subtitle?: string;
+  publishDate?: string;
+}
+
+interface RSSItem {
+  title: string;
+  description: string;
+  link: string;
+  pubDate: string;
 }
 
 export default function Blog() {
@@ -33,7 +40,7 @@ export default function Blog() {
         const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}`);
         const data = await response.json();
         
-        const formattedPosts = data.items.map((item: any) => ({
+        const formattedPosts = data.items.map((item: RSSItem) => ({
           title: item.title,
           description: item.description,
           subtitle: item.description.replace(/<[^>]*>/g, '').slice(0, 100) + '...',

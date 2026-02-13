@@ -4,21 +4,24 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiEdit, FiDownload, FiCopy } from 'react-icons/fi';
 import EditorJSRenderer from './EditorJSRenderer';
+import type { EditorJSOutput } from '@/types/editorjs';
 
 interface FileViewerProps {
   isOpen: boolean;
   onClose: () => void;
   fileName: string;
-  content: any;
+  content: EditorJSOutput | string;
   onEdit: () => void;
 }
 
 export default function FileViewer({ isOpen, onClose, fileName, content, onEdit }: FileViewerProps) {
   const [copied, setCopied] = useState(false);
 
+  const contentString = typeof content === 'string' ? content : JSON.stringify(content);
+
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(content);
+      await navigator.clipboard.writeText(contentString);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -27,7 +30,7 @@ export default function FileViewer({ isOpen, onClose, fileName, content, onEdit 
   };
 
   const downloadFile = () => {
-    const blob = new Blob([content], { type: 'text/plain' });
+    const blob = new Blob([contentString], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -60,14 +63,11 @@ export default function FileViewer({ isOpen, onClose, fileName, content, onEdit 
     }
   };
 
-  const formatContent = (content: any) => {
-    // Check if content is EditorJS format or plain text
-    if (content && typeof content === 'object' && content.blocks) {
+  const formatContent = (rawContent: EditorJSOutput | string): string | null => {
+    if (rawContent && typeof rawContent === 'object' && 'blocks' in rawContent) {
       return null; // Will be handled by EditorJSRenderer
     }
-    
-    // Fallback to plain text formatting
-    const textContent = typeof content === 'string' ? content : JSON.stringify(content);
+    const textContent = typeof rawContent === 'string' ? rawContent : JSON.stringify(rawContent);
     return textContent
       .split('\n')
       .map((line) => {
@@ -116,7 +116,7 @@ export default function FileViewer({ isOpen, onClose, fileName, content, onEdit 
                 <div>
                   <h2 className="text-xl font-semibold text-white">{fileName}</h2>
                   <p className="text-sm text-gray-400">
-                    {content.length} characters • {content.split('\n').length} lines
+                    {contentString.length} characters • {contentString.split('\n').length} lines
                   </p>
                 </div>
               </div>

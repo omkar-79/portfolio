@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
 import mykerchiefImage from '@/assets/mykerchief.jpg';
@@ -31,7 +31,7 @@ const projects: Project[] = [
     name: "Invoice Discount Optimizer",
     description: "A financial analysis platform for optimizing invoice payment decisions",
     image: invoice_optimizer, 
-    tools: ["Next.js", "Node.js", "AWS ECS Fargate"],
+    tools: ["AWS (ECS Fargate, ECR, RDS)", "Docker", "Jenkins"],
     category: "software",
     link: "https://github.com/omkar-79/invoice_discount_optimzer"
   },
@@ -106,7 +106,7 @@ const projects: Project[] = [
     name: "BlueJay AI",
     description: "An intelligent chat application that provides AI-driven insights and analysis for S&P 500 component stocks.",
     image: bluejayai, 
-    tools: ["Python", "Google Gemini API", "SQL"],
+    tools: ["Python", "Langchain", "Google Gemini API", "SQL"],
     category: "ml",
     link: "https://github.com/omkar-79/bluejay_ai/tree/main"
   },
@@ -136,12 +136,35 @@ const projects: Project[] = [
   // Add more projects here
 ];
 
+const DESKTOP_INITIAL = 6;
+const MOBILE_INITIAL = 4;
+
 export default function Projects() {
   const [filter, setFilter] = useState<'all' | 'software' | 'ml'>('all');
+  const [showMore, setShowMore] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const filteredProjects = projects.filter(project => 
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    setShowMore(false);
+  }, [filter]);
+
+  const filteredProjects = projects.filter(project =>
     filter === 'all' ? true : project.category === filter
   );
+
+  const initialCount = isMobile ? MOBILE_INITIAL : DESKTOP_INITIAL;
+  const hasMore = filteredProjects.length > initialCount;
+  const displayedProjects = showMore
+    ? filteredProjects
+    : filteredProjects.slice(0, initialCount);
 
   return (
     <section className="py-16 w-full max-w-6xl mx-auto px-4">
@@ -193,7 +216,7 @@ export default function Projects() {
         layout
       >
         <AnimatePresence>
-          {filteredProjects.map((project) => (
+          {displayedProjects.map((project) => (
             <motion.div
               key={project.id}
               layout
@@ -234,6 +257,17 @@ export default function Projects() {
           ))}
         </AnimatePresence>
       </motion.div>
+
+      {hasMore && (
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={() => setShowMore((prev) => !prev)}
+            className="px-6 py-3 rounded-full bg-[#49c5b6] text-white font-medium hover:bg-[#3db5a8] transition-colors"
+          >
+            {showMore ? 'Show less' : 'Show more'}
+          </button>
+        </div>
+      )}
     </section>
   );
 }

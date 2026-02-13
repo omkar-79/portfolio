@@ -6,19 +6,34 @@ import { FiLogOut } from 'react-icons/fi';
 import Login from './Login';
 import FolderManager from './FolderManager';
 import { sampleFolders } from './sampleData';
+import type { EditorJSOutput } from '@/types/editorjs';
 
 interface Folder {
   id: string;
   name: string;
-  files: File[];
+  files: NoteFile[];
 }
 
-interface File {
+interface NoteFile {
   id: string;
   name: string;
-  content: string;
+  content: EditorJSOutput | string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+interface ParsedFolder {
+  id: string;
+  name: string;
+  files: ParsedNoteFile[];
+}
+
+interface ParsedNoteFile {
+  id: string;
+  name: string;
+  content: EditorJSOutput | string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export default function NotesApp() {
@@ -34,11 +49,11 @@ export default function NotesApp() {
     
     if (savedFolders) {
       try {
-        const parsedFolders = JSON.parse(savedFolders);
+        const parsedFolders = JSON.parse(savedFolders) as ParsedFolder[];
         // Convert date strings back to Date objects
-        const foldersWithDates = parsedFolders.map((folder: any) => ({
+        const foldersWithDates = parsedFolders.map((folder: ParsedFolder) => ({
           ...folder,
-          files: folder.files.map((file: any) => ({
+          files: folder.files.map((file: ParsedNoteFile) => ({
             ...file,
             createdAt: new Date(file.createdAt),
             updatedAt: new Date(file.updatedAt)
@@ -106,10 +121,10 @@ export default function NotesApp() {
     }
   };
 
-  const handleFileCreate = (fileName: string, content: string) => {
+  const handleFileCreate = (fileName: string, content: EditorJSOutput | string) => {
     if (!currentFolder) return;
 
-    const newFile: File = {
+    const newFile: NoteFile = {
       id: Date.now().toString(),
       name: fileName,
       content,
@@ -124,7 +139,7 @@ export default function NotesApp() {
     ));
   };
 
-  const handleFileEdit = (fileId: string, fileName: string, content: string) => {
+  const handleFileEdit = (fileId: string, fileName: string, content: EditorJSOutput | string) => {
     if (!currentFolder) return;
 
     setFolders(folders.map(folder => 

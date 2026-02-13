@@ -10,15 +10,15 @@ interface Skill {
 const skills: Skill[] = [
   {
     category: "Programming Languages",
-    items: ["Python", "JavaScript", "TypeScript", "Java", "C++", "SQL"]
+    items: ["Python", "TypeScript", "JavaScript", "Java", "C++", "SQL"]
   },
   {
     category: "Frameworks & Libraries",
-    items: ["React.js", "Next.js", "Angular", "Node.js", "Express.js", "FastAPI", "REST APIs", "HuggingFace"]
+    items: ["React.js", "Next.js", "Angular", "Node.js", "Express.js", "FastAPI", "REST APIs", "HuggingFace", "Langchain"]
   },
   {
     category: "Tools & Platforms",
-    items: ["Git", "Docker", "AWS", "MongoDB", "PostgreSQL", "Firebase", "Jenkins"]
+    items: ["Git", "Docker", "AWS", "GCP", "PostgreSQL", "Firebase", "Jenkins"]
   }
 ];
 

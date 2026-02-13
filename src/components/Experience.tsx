@@ -12,14 +12,36 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
+    title: "AI Software Developer",
+    company: "Emko Capital LLC",
+    duration: "January 2026 - Present",
+    description: [
+      "Revamped the existing AI system to add guardrails, fault tolerance, and better accuracy",
+      "Reduced document processing errors by 80% and strengthened the pipeline to handle complex Excel and PDF finance documents",
+      "Improved automation and reliability for investment portfolio management tasks"
+    ],
+    skills: ["TypeScript", "Python", "Langchain", "Gemini", "FastAPI", "PostgreSQL"]
+  },
+  {
+    title: "AI Automation Engineer",
+    company: "Dennis Injury Law",
+    duration: "November 2025 - January 2026",
+    description: [
+      "Developed a voice agent to automate calls to insurance companies for claims processing",
+      "Achieved a reduction of 2-3 hours of manual work by handling 10-15 calls daily"
+    ],
+    skills: ["Python", "Langchain", "Gemini", "FastAPI", "GCP"]
+  },
+  {
     title: "Software Developer Intern",
     company: "George Washington University",
     duration: "August 2025 - Present",
     description: [
-      "Building a MVP mobile application with Expo Go and React Native",
-      "Created an end-to-end CI/CD pipeline using Jenkins"
+      "Designed and developed a mobile app from scratch, currently undergoing testing with a group of over 20 nurses",
+      "Built RAG pipeline to process complex health policies",
+      "Implemented HIPAA-compliant data handling and HL7 authentication for secure, compliant healthcare workflows"
     ],
-    skills: ["TypeScript", "React Native", "PostgreSQL", "Jenkins"]
+    skills: ["TypeScript", "Python", "Langchain", "Gemini", "React Native"]
   },
   {
     title: "Software Engineer Intern",
@@ -34,7 +56,7 @@ const experiences: Experience[] = [
   {
     title: "Research Assistant",
     company: "George Washington University",
-    duration: "August 2024 - Present",
+    duration: "August 2024 - December 2025",
     description: [
       "Assess patent potential and commercial viability of emerging technologies developed at the university",
       "Drafted technical summaries and reports for the university's research projects"

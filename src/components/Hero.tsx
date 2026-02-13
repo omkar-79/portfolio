@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 export default function Hero() {
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const [vantaEffect, setVantaEffect] = useState<{ destroy: () => void } | null>(null);
   const vantaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function Hero() {
           Omkar Balekundri
         </h1>
         <p className="text-l md:text-xl text-gray-300">
-          Software Engineering and Machine Learning
+        Full-Stack Software Engineer | Applied AI (RAG/LLMs)
         </p>
       </div>
     </div>
